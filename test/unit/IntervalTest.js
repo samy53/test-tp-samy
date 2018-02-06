@@ -102,7 +102,7 @@ describe("Interval - union", function () {
 describe("Interval - intersection", function () {
     testedInterval = new Interval(10, 20);
 
-    [
+    [ 
         {
             interv : new Interval(10, 12),
             value : new Interval(10,12) 

@@ -12,7 +12,7 @@ describe("Factorial", function(){
             n : 2,
             factorial : 2
         },
-        {
+        { 
             n : 3,
             factorial : 6
         },

@@ -15,10 +15,6 @@ Util.factorial = function(n) {
         throw 'Unable to compute factorial of non integer values'
     }
 
-    if (n >= 100) {
-        throw 'Unable to compute factorial for n > 100'
-    }
-
     if (0 === n) {
         return 1;
     }
@@ -40,7 +36,7 @@ Util.arrangement = function(n, r) {
         throw 'Unable to compute arrangement for r > n';
     }
 
-    if( typeof r !== "number" )
+    if( typeof r !== "number" || Math.floor(r) !== r)
     {
         throw 'Unable to compute arrangement of non integer values (r)'
     }
@@ -58,9 +54,7 @@ Util.arrangement = function(n, r) {
  */
 Util.combination = function(n, r) {
 
-
     return Util.arrangement( n ,r ) / Util.factorial( r ) ;
-
 };
 
 /**
@@ -84,12 +78,19 @@ Util.isPrime = function(n) {
     }
 
     if( n === 1 )
+    {
         return false;
+    }
 
     for( var i = 2 ; i < n ; i++ )
-        if( n % i === 0 ) return false
+    {
+        if( n % i === 0 )
+        { 
+            return false
+        }
+    }
 
-    return n !== 1
+    return true
 
 };
 
@@ -110,6 +111,9 @@ Util.sumPrime = function(n) {
     if( typeof n !== "number" || Math.floor( n ) !== n )
     {
         throw 'Unable to compute sumPrime of non integer values';
+    }
+    if (n < 2) {
+        throw 'Unable to compute sumPrime for n < 2'
     }
 
     for( var i = n ; i >= 2 ; i-- )
@@ -189,13 +193,21 @@ Util.cipher = function (phrase) {
     for( i = 0 ; i < phrase.length ; i++ )
     {
         if( phrase[i] === "Z" )
+        {
             cipher += "A"
+        }
         else if( phrase[i] === "z" )
+        {
             cipher += "a";
+        }
         else if( phrase[i] === " " )
+        {
             cipher += " "
+        }
         else
+        {
             cipher += String.fromCharCode(phrase[i].charCodeAt(0)+1);
+        }
     }
 
     return cipher;

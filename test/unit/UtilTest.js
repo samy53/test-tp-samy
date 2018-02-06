@@ -44,12 +44,6 @@ describe("Factorial", function(){
         expect(f).toThrow('Unable to compute factorial of non integer values');
     })
 
-    it("should raise an exception for n > 100", function(){
-        var f = function(){
-            Util.factorial(101);
-        }
-        expect(f).toThrow('Unable to compute factorial for n > 100');
-    })
 });
 
 describe('Arrangement' , function(){
@@ -71,9 +65,9 @@ describe('Arrangement' , function(){
         value: 120
     },
     {
-        n: 4,
+        n: 3,
         r: 1,
-        value: 4
+        value: 3
     }];
 
     testCases.forEach(function(testCase){
@@ -118,14 +112,14 @@ describe('Combination' , function(){
         value: 1
     },
     {
-        n: 5,
-        r: 5,
-        value: 1
-    },
-    {
         n: 4,
         r: 1,
         value: 4
+    },
+    {
+        n: 4,
+        r: 2,
+        value: 6
     }];
 
     testCases.forEach(function(testCase){
@@ -172,7 +166,6 @@ describe('isPrime' , function(){
             expect(result).toEqual(testCase.value);
         })
     });
-
 
 
     it("should raise an exception when n is not a number", function(){
@@ -229,6 +222,13 @@ describe("SumPrime", function(){
             Util.sumPrime("test");
         }
         expect(f).toThrow('Unable to compute sumPrime of non integer values');
+    })
+
+    it("should raise an exception when n < 2", function(){
+        var f = function(){
+            Util.sumPrime(1);
+        }
+        expect(f).toThrow('Unable to compute sumPrime for n < 2');
     })
 });
 
@@ -289,12 +289,12 @@ describe("Cipher", function(){
         ciphered: 'bcde'
     },
     {
-        original: 'pipi',
-        ciphered: 'qjqj'
+        original: 'ABCD',
+        ciphered: 'BCDE'
     },
     {
-        original: "Andy Zonk",
-        ciphered: "Boez Apol"
+        original: "un deux trois test",
+        ciphered: "vo efvy uspjt uftu"
     },
     {
         original: "Test Unitaire",

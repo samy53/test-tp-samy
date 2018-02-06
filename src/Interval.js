@@ -95,7 +95,7 @@ if(!this.overlaps(interval))
  */
 Interval.prototype.exclusion = function (interval) {
 
-}; 
+};
 
 
 
